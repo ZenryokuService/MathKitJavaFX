@@ -4,6 +4,9 @@
   <artifactId>MathKitJavaFX</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>JavaFX数学キット</name>
+  <properties>
+   <nd4j.version>0.9.1</nd4j.version>
+  </properties>
   <description>数学をJavaFXで学びます、JavaFXを使うのでそれに付随することも実装します。</description>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -26,4 +29,19 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+      <dependency>
+         <groupId>org.nd4j</groupId>
+         <artifactId>nd4j-native-platform</artifactId>
+      </dependency>
+  </dependencies>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>org.nd4j</groupId>
+  			<artifactId>nd4j-native-platform</artifactId>
+  			<version>${nd4j.version}</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
 </project>

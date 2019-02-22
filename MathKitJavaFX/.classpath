@@ -18,5 +18,14 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/takk/.m2/repository/org/nd4j/nd4j-api/0.9.1/nd4j-api-0.9.1.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.nd4j"/>
+			<attribute name="maven.artifactId" value="nd4j-api"/>
+			<attribute name="maven.version" value="0.9.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
