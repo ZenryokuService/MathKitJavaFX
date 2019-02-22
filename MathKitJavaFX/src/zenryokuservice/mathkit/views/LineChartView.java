@@ -24,8 +24,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import zenryokuservice.mathkit.GameN;
-import zenryokuservice.mathkit.GameNEnum;
 import zenryokuservice.mathkit.MathKitView;
 
 /**
@@ -34,7 +32,6 @@ import zenryokuservice.mathkit.MathKitView;
  * @author takunoji
  * 2019/02/21
  */
-@GameN(classType=GameNEnum.VIEW_CLASS_TYPE)
 public class LineChartView extends Parent implements MathKitView {
 	/** このクラスのインスタンス */
 	private LineChartView instance;
@@ -61,19 +58,21 @@ public class LineChartView extends Parent implements MathKitView {
                                 
         XYChart.Series series = new XYChart.Series();
         series.setName("初めのグラフ");
-        
-        series.getData().add(new XYChart.Data("Jan", 23));
-        series.getData().add(new XYChart.Data("Feb", 14));
-        series.getData().add(new XYChart.Data("Mar", 15));
-        series.getData().add(new XYChart.Data("Apr", 24));
-        series.getData().add(new XYChart.Data("May", 34));
-        series.getData().add(new XYChart.Data("Jun", 36));
-        series.getData().add(new XYChart.Data("Jul", 22));
-        series.getData().add(new XYChart.Data("Aug", 45));
-        series.getData().add(new XYChart.Data("Sep", 43));
-        series.getData().add(new XYChart.Data("Oct", 17));
-        series.getData().add(new XYChart.Data("Nov", 29));
-        series.getData().add(new XYChart.Data("Dec", 25));
+        INDArray data = createRandomData();
+        int inc = 0;
+        System.out.println(data.getInt(0));
+        series.getData().add(new XYChart.Data("Jan", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Feb", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Mar", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Apr", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("May", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Jun", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Jul", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Aug", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Sep", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Oct", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Nov", data.getDouble(inc++) * 100));
+        series.getData().add(new XYChart.Data("Dec", data.getDouble(inc++) * 100));
 
         root.getChildren().add(lineChart);
         // データのセット
