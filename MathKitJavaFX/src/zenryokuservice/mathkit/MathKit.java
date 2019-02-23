@@ -51,9 +51,9 @@ public class MathKit extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			VBox root = new VBox();
-			// メインの画面
-			childViewMap.get("LineChart").loadView(root); 
-			Scene scene = new Scene(root,400,400);
+			// メインの画面:キーの部分がプロパティファイルのキーになる
+			childViewMap.get("Graphics2D").loadView(root); 
+			Scene scene = new Scene(root,500,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -102,7 +102,6 @@ public class MathKit extends Application {
 				e.printStackTrace();
 			}
 		});;
-		System.out.println("MapSize = " + childViewMap.values().size());
 		if (childViewMap.size() == 0) {
 			System.out.println("プロパティファイルに画面が登録されていません。");
 			System.exit(-1);
