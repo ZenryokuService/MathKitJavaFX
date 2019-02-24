@@ -8,6 +8,8 @@
  */
 package zenryokuservice.mathkit.views;
 
+import javafx.collections.ObservableList;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -31,17 +33,18 @@ public class Graphics2DView extends Parent implements MathKitView {
 	 */
 	@Override
 	public Parent loadView(VBox root) {
+		ObservableList<Node> nodeList = root.getChildren();
 		Text txt = new Text("y = ax");
 		txt.setFont(new Font(20));
 		txt.setTextAlignment(TextAlignment.RIGHT);
-		root.getChildren().add(txt);
+		nodeList.add(txt);
 		Canvas canvas = new Canvas(CANVAS_SIZE, CANVAS_SIZE);
 		GraphicsContext ctx = canvas.getGraphicsContext2D();
 		// グラフの土台を作る
 		drawGraphBase(ctx, root);
 		// 関数を描画する
 		drawFunction(ctx, root);
-		root.getChildren().add(canvas);
+		nodeList.add(canvas);
 		return root;
 	}
 
@@ -51,6 +54,12 @@ public class Graphics2DView extends Parent implements MathKitView {
 	 * @param root レイアウトクラス(シーン追加する)
 	 */
 	private void drawGraphBase(GraphicsContext ctx, VBox root) {
+		ctx.setFont(new Font(15));
+		ctx.strokeText("X", CANVAS_SIZE - 20, (CANVAS_SIZE / 2) + 15);
+		ctx.strokeText("Y", (CANVAS_SIZE / 2) - 15, 15);
+		ctx.strokeText("0", CANVAS_SIZE / 2 + 10, CANVAS_SIZE / 2 + 20);
+//		ctx.fillText("X軸", CANVAS_SIZE / 2, CANVAS_SIZE / 2);
+
 		ctx.setStroke(Color.BLACK);
 		ctx.setLineWidth(2.0);
 		// X軸
@@ -80,9 +89,10 @@ public class Graphics2DView extends Parent implements MathKitView {
 		/* 座標系を画面の端っこ(0, 0)を画面の中心にする */
 		ctx.setFill(Color.RED);
 		// 傾き
-		int a = 1;
-		for (int x = -(CANVAS_SIZE / 2); x <= (CANVAS_SIZE / 2); x++) {
-			int y = y_ax(a, x);
+		double a = 0.0001;
+		for (double x = -(CANVAS_SIZE / 2); x <= (CANVAS_SIZE / 2); x = x + 0.1) {
+			double y = y_ax3(a, x);
+			//if (x == 1) System.out.println("==> " + y);
 			ctx.fillOval(convertCenter(x, true), convertCenter(y, false), 2, 2);
 		}
 	}
@@ -92,11 +102,12 @@ public class Graphics2DView extends Parent implements MathKitView {
 	 * @param value グラフ上の値(0,0)は画面の中心
 	 * @return 描画するCanvas上の値(0,0)は画面の左端
 	 */
-	private double convertCenter(int value, boolean isX) {
-		int graphValue = 0;
+	private double convertCenter(double value, boolean isX) {
+		double graphValue = 0;
 		if (isX) {
 			graphValue = value + (CANVAS_SIZE / 2);
 		} else {
+			// 画面上の見え方を調節するために10分の1にする
 			graphValue = (CANVAS_SIZE / 2) - value;
 		}
 		return graphValue;
@@ -107,7 +118,28 @@ public class Graphics2DView extends Parent implements MathKitView {
 	 * @param x Xの値
 	 * @return yの値
 	 */
-	private int y_ax(int a, int x) {
+	private double y_ax(double a, double x) {
 		return a * x;
+	}
+
+	/**
+	 * 2次関数
+	 * @param a 傾き
+	 * @param x Xの値
+	 * @return Yの値
+	 */
+	private double y_ax2(double a, double x) {
+		double d = x / 1; 
+		return a * Math.pow(d, 2.0);
+	}
+
+	/**
+	 * 3次関数
+	 * @param a 傾き
+	 * @param x Xの値
+	 * @return Yの値
+	 */
+	private double y_ax3(double a, double x) {
+		return a * Math.pow(x, 3);
 	}
 }
