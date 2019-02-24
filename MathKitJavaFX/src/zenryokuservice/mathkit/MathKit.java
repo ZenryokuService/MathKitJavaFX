@@ -52,7 +52,7 @@ public class MathKit extends Application {
 		try {
 			VBox root = new VBox();
 			// メインの画面:キーの部分がプロパティファイルのキーになる
-			childViewMap.get("Graphics2D").loadView(root); 
+			childViewMap.get("Vector2D").loadView(root); 
 			Scene scene = new Scene(root,600,600);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
@@ -72,6 +72,7 @@ public class MathKit extends Application {
 	 */
 	public static void main(String[] args) {
 		MathKit main = new MathKit();
+		System.out.println();
 		launch(args);
 	}
 
