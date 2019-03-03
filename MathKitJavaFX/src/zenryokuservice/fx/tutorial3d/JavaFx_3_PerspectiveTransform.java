@@ -21,8 +21,9 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 /**
+ * チュートリアル「40 テキストへの効果の適用」＜パースペクティブを使用する部分＞
  * @author takunoji
- *
+ * @see https://docs.oracle.com/javase/jp/8/javafx/user-interface-tutorial/text-effects.htm
  * 2019/03/03
  */
 public class JavaFx_3_PerspectiveTransform extends Application {

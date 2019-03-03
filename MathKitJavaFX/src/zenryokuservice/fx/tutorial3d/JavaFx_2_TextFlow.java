@@ -18,8 +18,10 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 /**
+ * チュートリアル「39 JavaFXでのテキストの使用」テキストフローの実装。
+ * 
  * @author takunoji
- *
+ * @see https://docs.oracle.com/javase/jp/8/javafx/user-interface-tutorial/text-settings.htm
  * 2019/03/03
  */
 public class JavaFx_2_TextFlow extends Application {
