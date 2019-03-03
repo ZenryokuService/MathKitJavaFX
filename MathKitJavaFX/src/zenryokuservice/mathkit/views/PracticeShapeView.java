@@ -25,7 +25,6 @@ public class PracticeShapeView extends Parent implements MathKitView {
 	 */
 	@Override
 	public Parent loadView(VBox root) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -34,7 +33,6 @@ public class PracticeShapeView extends Parent implements MathKitView {
 	 */
 	@Override
 	public boolean useCamera() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -43,8 +41,6 @@ public class PracticeShapeView extends Parent implements MathKitView {
 	 */
 	@Override
 	public Camera getCamera() {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
