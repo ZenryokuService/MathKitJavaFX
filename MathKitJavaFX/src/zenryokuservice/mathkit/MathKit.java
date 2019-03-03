@@ -13,10 +13,14 @@ import java.util.Properties;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.scene.Camera;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * 数学キットアプリケーション。
@@ -52,8 +56,25 @@ public class MathKit extends Application {
 		try {
 			VBox root = new VBox();
 			// メインの画面:キーの部分がプロパティファイルのキーになる
-			childViewMap.get("Vector2D").loadView(root); 
-			Scene scene = new Scene(root,600,600);
+			MathKitView view = childViewMap.get("Testing3D");
+			Camera came = null;
+			Scene scene = null;
+			if (view.useCamera()) {
+				came = view.getCamera();
+				Group gp = new Group();
+				gp.getChildren().add(came);
+				gp.getChildren().add(view.loadView(root));
+				
+				root.getChildren().add(came);
+		        SubScene subScene = new SubScene(gp, 300,300);
+		        subScene.setFill(Color.ALICEBLUE);
+		        subScene.setCamera(came);
+		        root.getChildren().add(subScene);
+				scene = new Scene(gp,600,600, true);
+			} else {
+				scene = new Scene(view.loadView(root),600,600);
+			}
+			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();

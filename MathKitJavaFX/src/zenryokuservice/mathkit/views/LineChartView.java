@@ -13,6 +13,7 @@ import org.nd4j.linalg.factory.Nd4j;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
+import javafx.scene.Camera;
 import javafx.scene.Parent;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
@@ -90,5 +91,21 @@ public class LineChartView extends Parent implements MathKitView {
 		INDArray res = Nd4j.rand(1, 12);
 		System.out.println(res);
 		return res;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#useCamera()
+	 */
+	@Override
+	public boolean useCamera() {
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#getCamera()
+	 */
+	@Override
+	public Camera getCamera() {
+		return null;
 	}
 }

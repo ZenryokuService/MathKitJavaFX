@@ -10,6 +10,7 @@ package zenryokuservice.mathkit.views;
 
 import com.sun.prism.paint.Color;
 
+import javafx.scene.Camera;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
@@ -42,6 +43,22 @@ public class BasicGraphView extends Parent implements MathKitView {
 		Line vertical = new Line(150.0f, 0.0f, 150.0f, 300.0f);
 		root.getChildren().add(vertical);
 		return root;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#useCamera()
+	 */
+	@Override
+	public boolean useCamera() {
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#getCamera()
+	 */
+	@Override
+	public Camera getCamera() {
+		return null;
 	}
 
 }

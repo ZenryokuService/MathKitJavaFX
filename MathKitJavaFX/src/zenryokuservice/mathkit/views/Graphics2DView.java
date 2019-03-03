@@ -9,6 +9,7 @@
 package zenryokuservice.mathkit.views;
 
 import javafx.collections.ObservableList;
+import javafx.scene.Camera;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
@@ -141,5 +142,21 @@ public class Graphics2DView extends Parent implements MathKitView {
 	 */
 	private double y_ax3(double a, double x) {
 		return a * Math.pow(x, 3);
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#useCamera()
+	 */
+	@Override
+	public boolean useCamera() {
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#getCamera()
+	 */
+	@Override
+	public Camera getCamera() {
+		return null;
 	}
 }

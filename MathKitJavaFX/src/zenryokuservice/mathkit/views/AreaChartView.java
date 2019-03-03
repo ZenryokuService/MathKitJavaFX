@@ -8,6 +8,7 @@
  */
 package zenryokuservice.mathkit.views;
 
+import javafx.scene.Camera;
 import javafx.scene.Parent;
 import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.NumberAxis;
@@ -64,5 +65,21 @@ public class AreaChartView extends Parent implements MathKitView {
         ac.getData().add(seriesMay);
         ac.getData().add(seriesApril);
         return root;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#useCamera()
+	 */
+	@Override
+	public boolean useCamera() {
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#getCamera()
+	 */
+	@Override
+	public Camera getCamera() {
+		return null;
 	}
 }

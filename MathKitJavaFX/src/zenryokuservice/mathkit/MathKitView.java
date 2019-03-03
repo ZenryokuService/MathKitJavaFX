@@ -8,6 +8,7 @@
  */
 package zenryokuservice.mathkit;
 
+import javafx.scene.Camera;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 
@@ -23,4 +24,7 @@ public interface MathKitView {
 	public static final int VIEW_CLASS_TYPE = 1;
 	/** 作成した画面を取得する */
 	public Parent loadView(VBox root);
+	/** 3D空間を使用するかどうか(Cameraを使用するかどうか？ */
+	public boolean useCamera();
+	public Camera getCamera();
 }

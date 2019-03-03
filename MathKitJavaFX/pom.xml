@@ -34,7 +34,7 @@
          <groupId>org.nd4j</groupId>
          <artifactId>nd4j-native-platform</artifactId>
       </dependency>
-  </dependencies>
+   </dependencies>
   <dependencyManagement>
   	<dependencies>
   		<dependency>

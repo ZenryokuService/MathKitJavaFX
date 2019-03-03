@@ -12,6 +12,7 @@ import org.nd4j.linalg.api.ndarray.INDArray;
 import org.nd4j.linalg.api.rng.Random;
 import org.nd4j.linalg.factory.Nd4j;
 
+import javafx.scene.Camera;
 import javafx.scene.Parent;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -158,5 +159,21 @@ public class Vector2DView extends Parent implements MathKitView {
 			// 矢印の長いところ
 			ctx.strokeLine(this.startX, this.startY, this.endX, this.endY);
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#useCamera()
+	 */
+	@Override
+	public boolean useCamera() {
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see zenryokuservice.mathkit.MathKitView#getCamera()
+	 */
+	@Override
+	public Camera getCamera() {
+		return null;
 	}
 }
