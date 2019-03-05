@@ -6,47 +6,64 @@
  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
  * Neither the name Math Kit JavaFX Library nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
  */
-package zenryokuservice.fx.tutorial3d;
+package zenryokuservice.fx.tutorial.step2;
 
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.GaussianBlur;
+import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 /**
- * チュートリアル「39 JavaFXでのテキストの使用」テキストフローの実装。
- * 
+ * <dl>
+ * <dt>チュートリアル「40 テキストへの効果の適用」＜ドロップシャドウ＞を実装する</dt>
+ * <dd>DropShadowクラスを使用して文字にぼかし効果を入れる</dd>
+ * </dl>
  * @author takunoji
- * @see https://docs.oracle.com/javase/jp/8/javafx/user-interface-tutorial/text-settings.htm
+ *　@see https://docs.oracle.com/javase/jp/8/javafx/user-interface-tutorial/text-effects.htm
  * 2019/03/03
  */
-public class JavaFx_2_TextFlow extends Application {
-
+public class JavaFx_3_DropShadow extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		TextFlow textFlow = new TextFlow();
-		Font font = new Font("Tahoma", 48);
-
-		Text text1 = new Text("Hello World");
-		text1.setFill(Color.RED);
-		text1.setFont(font);
-
-		Text text2 = new Text("Come on Baby!");
-		text2.setFill(Color.BLUE);
-		text2.setFont(new Font("Tahoma", 38));
-
-		textFlow.getChildren().addAll(text1, text2);
-		Group group = new Group(textFlow);
+		// グループ
+		Group group = createView(new Group());
+		/* ****** 固定の部分 ***********/
 		Scene scene = new Scene(group, 650, 150, Color.WHITE);
 		primaryStage.setTitle("2nd JavaFX");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
 
+	/**
+	 * チュートリアルのソース部分を実装します。
+	 * @param group チュートリアルでは「g」とかの変数名になっているので注意
+	 * @return　作成した画面(Group)
+	 */
+	private Group createView(Group group) {
+		DropShadow drop = new DropShadow();
+		drop.setOffsetY(3.0);
+		drop.setColor(Color.color(0.4f,0.4f,0.4f));
+		Text tx = new Text();
+		tx.setX(50.0f);
+		tx.setY(50.0f);
+		tx.setCache(true);
+		tx.setText("影を落とす効果");
+		tx.setFill(Color.RED);
+		tx.setFont(Font.font(null,FontWeight.BOLD, 36));
+		// キーポイント
+		tx.setEffect(drop);
+		group.getChildren().add(tx);
+		return group;
+	}
 	/**
 	 * メインメソッド
 	 * @param args プログラム引数

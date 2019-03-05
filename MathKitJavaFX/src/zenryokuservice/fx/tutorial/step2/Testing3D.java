@@ -6,7 +6,7 @@
  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
  * Neither the name Math Kit JavaFX Library nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
  */
-package zenryokuservice.fx.tutorial3d;
+package zenryokuservice.fx.tutorial.step2;
 
 import javafx.application.Application;
 import javafx.scene.Group;

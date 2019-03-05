@@ -1,4 +1,4 @@
-package zenryokuservice.fx.tutorial3d;
+package zenryokuservice.fx.tutorial.step2;
 import javafx.application.Application; 
 import javafx.scene.Group; 
 import javafx.scene.Scene; 

@@ -6,11 +6,12 @@
  * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
  * Neither the name Math Kit JavaFX Library nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
  */
-package zenryokuservice.fx.tutorial3d;
+package zenryokuservice.fx.tutorial.step2;
 
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -21,47 +22,20 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 /**
- * チュートリアル「40 テキストへの効果の適用」＜パースペクティブを使用する部分＞
+ * <dl>
+ * <dt>チュートリアル「40 テキストへの効果の適用」＜ぼかし効果＞を実装する</dt>
+ * <dd>GaussianBlurクラスを使用して文字にぼかし効果を入れる</dd>
+ * <dd>ガウス・コンボリューション・カーネルに基づいてぼかし効果を入れる</dd>
+ * </dl>
  * @author takunoji
- * @see https://docs.oracle.com/javase/jp/8/javafx/user-interface-tutorial/text-effects.htm
+ *　@see https://docs.oracle.com/javase/jp/8/javafx/user-interface-tutorial/text-effects.htm
  * 2019/03/03
  */
-public class JavaFx_3_PerspectiveTransform extends Application {
+public class JavaFx_3_GaussianBlur extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		PerspectiveTransform form = new PerspectiveTransform();
-		// Ulの設定
-		form.setUlx(10.0f);
-		form.setUly(10.0f);
-		// Urの設定
-		form.setUrx(180.0f);
-		form.setUry(50.0f);
-		// Llの設定
-		form.setLlx(10.0f);
-		form.setLly(100.0f);
-		// Lrの設定
-		form.setLrx(180.0f);
-		form.setLry(60.0f);
 		// グループ
-		Group group = new Group();
-		group.setEffect(form);
-		group.setCache(true);
-		// 
-		Rectangle rec = new Rectangle();
-		rec.setX(10.0);
-		rec.setY(10.0);
-		rec.setWidth(280.0);
-		rec.setHeight(80.0);
-		rec.setFill(Color.BLUE);
-		// 
-		Text text = new Text();
-		text.setX(20.0f);
-		text.setY(65.0f);
-		text.setText("Perspective");
-		text.setFill(Color.YELLOW);
-		text.setFont(Font.font(null, FontWeight.BOLD, 36));
-
-		group.getChildren().addAll(rec, text);
+		Group group = createView(new Group());
 		/* ****** 固定の部分 ***********/
 		Scene scene = new Scene(group, 650, 150, Color.WHITE);
 		primaryStage.setTitle("2nd JavaFX");
@@ -69,6 +43,23 @@ public class JavaFx_3_PerspectiveTransform extends Application {
 		primaryStage.show();
 	}
 
+	/**
+	 * チュートリアルのソース部分を実装します。
+	 * @param group チュートリアルでは「g」とかの変数名になっているので注意
+	 * @return　作成した画面(Group)
+	 */
+	private Group createView(Group group) {
+		Text tx = new Text();
+		tx.setX(10.0f);
+		tx.setY(140.0f);
+		tx.setCache(true);
+		tx.setText("ぼかし効果を入れる");
+		tx.setFill(Color.RED);
+		tx.setFont(Font.font(null,FontWeight.BOLD, 36));
+		tx.setEffect(new GaussianBlur());
+		group.getChildren().add(tx);
+		return group;
+	}
 	/**
 	 * メインメソッド
 	 * @param args プログラム引数
