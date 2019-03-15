@@ -99,8 +99,8 @@ public class Lv3_RadioButton extends Application {
 		ImageView imageView = new ImageView();
 		lineLayout.getChildren().add(imageView);
 		final Map<String, Image> imageMap = createImageMap(imageView);
-		// イベントリスナー作成
-		EventHandler<ActionEvent> listener = createImageChanger(imageView);
+
+		// イベント処理
 		togle.selectedToggleProperty().addListener(
 				(ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) ->{
 					if (togle.getSelectedToggle() != null) {
@@ -112,7 +112,7 @@ public class Lv3_RadioButton extends Application {
 		// チュートリアルでは省略されている
 		Scene scene = new Scene(lineLayout, 1000, 300);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("チュートリアル3");
+		primaryStage.setTitle("チュートリアル4");
 		primaryStage.show();
 	}
 
@@ -133,14 +133,6 @@ public class Lv3_RadioButton extends Application {
 		return imgMap;
 	}
 
-	private EventHandler<ActionEvent> createImageChanger(final ImageView target) {
-		return new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				System.out.println("Hello Radio");
-			}
-		};
-	}
 	/** チュートリアルに乗っていた、元々のコード */
 	private void originCode(VBox group) {
 		/* トグル・グループの追加

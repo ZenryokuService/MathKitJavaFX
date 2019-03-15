@@ -67,7 +67,7 @@ public class Lv2_Button extends Application {
 		// チュートリアルでは省略されている
 		Scene scene = new Scene(group, 300, 300);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("チュートリアル１");
+		primaryStage.setTitle("チュートリアル2");
 		primaryStage.show();
 	}
 
