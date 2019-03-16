@@ -64,7 +64,7 @@ public class Xylophone extends Application {
 
     final Cam camOffset = new Cam();
     final Cam cam = new Cam();
-    
+    // 指定された乗数で座標を変形させるAffineオブジェクト
     final Shear shear = new Shear();
 
     class Cam extends Group {
@@ -82,18 +82,22 @@ public class Xylophone extends Application {
     }
 
     @Override public void start(final Stage stage) {
+    	// 画面(アプリ)のタイトルを設定
         stage.setTitle("Xylophone");
 
         camOffset.getChildren().add(cam);
         resetCam();
-
+        // シーンの作成
         final Scene scene = new Scene(camOffset, 800, 600, true);
+        // 背景(シーン)をRadialGradientでグラデーションを描画する
         scene.setFill(new RadialGradient(225, 0.85, 300, 300, 500, false,
                                          CycleMethod.NO_CYCLE, new Stop[]
                                          { new Stop(0f, Color.BLUE),
                                            new Stop(1f, Color.LIGHTBLUE) }));
+        // シーンにカメラを設定する
         scene.setCamera(new PerspectiveCamera());
 
+        /* 木琴のバーを作成する */
         final AudioClip bar1Note =
             new AudioClip(Xylophone.class.getResource("audio/Note1.wav").toString());
         final AudioClip bar2Note =
@@ -236,7 +240,7 @@ public class Xylophone extends Application {
             @Override
             public void handle(MouseEvent me) { bar8Note.play(); }
         });
-
+        // 「rectangleGroup」に木琴の土台〜音の出るバーまでを追加する
         rectangleGroup.getChildren().addAll(base1Cube, base2Cube,
                                             bar1Cube, bar2Cube, bar3Cube,
                                             bar4Cube, bar5Cube, bar6Cube,
@@ -244,7 +248,7 @@ public class Xylophone extends Application {
         rectangleGroup.setScaleX(2.5);
         rectangleGroup.setScaleY(2.5);
         rectangleGroup.setScaleZ(2.5);
-        cam.getChildren().add(rectangleGroup);
+        //cam.getChildren().add(rectangleGroup);
        
         frameCam(stage, scene);
 
