@@ -248,7 +248,7 @@ public class Xylophone extends Application {
         rectangleGroup.setScaleX(2.5);
         rectangleGroup.setScaleY(2.5);
         rectangleGroup.setScaleZ(2.5);
-        //cam.getChildren().add(rectangleGroup);
+        cam.getChildren().add(rectangleGroup);
        
         frameCam(stage, scene);
 
@@ -299,7 +299,11 @@ public class Xylophone extends Application {
                     double ty = cam.t.getY();
                     cam.t.setX(tx + mouseDeltaX);
                     cam.t.setY(ty + mouseDeltaY);
-                }                
+                } else if (me.isAltDown() && me.isSecondaryButtonDown()) {
+                    double scale = cam.s.getX();
+                    double newScale = scale + mouseDeltaX*0.01;
+                    cam.s.setX(newScale); cam.s.setY(newScale); cam.s.setZ(newScale);
+                }           
             }
         });
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
