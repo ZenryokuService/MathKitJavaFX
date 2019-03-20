@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 /**
- * JavaFXでのアニメーション(遷移)を行う。
+ * JavaFXでのアニメーション(パス遷移)を行う。
  * 
  * @author takunoji
  * @see https://docs.oracle.com/javase/jp/8/javafx/visual-effects-tutorial/basics.htm
