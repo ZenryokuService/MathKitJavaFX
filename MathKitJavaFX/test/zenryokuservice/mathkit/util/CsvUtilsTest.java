@@ -35,5 +35,12 @@ public class CsvUtilsTest {
 		});
 	}
 
+	@Test
+	public void testExportCsv1() {
+		List<String[]> res = CsvUtils.readCsv("D:\\csv\\c01.csv", "SJIS", true);
+		List<String[]> res1 = CsvUtils.readCsv("D:\\csv\\c01_1.csv", "SJIS", false);
+		res.addAll(res1);
+		CsvUtils.exportCsv(res, "D:\\csv\\export1.csv");
+	}
 
 }

@@ -1,6 +1,7 @@
 package zenryokuservice.mathkit.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -62,4 +63,30 @@ public class CsvUtils {
 		return dataList;
 	}
 
+	/**
+	 * List<String[]>のデータをCSV出力する
+	 * @param dataList String[]配列のリスト
+	 * @param exportPath 出力するCSVファイルのパス
+	 */
+	public static void exportCsv(List<String[]> dataList, String exportPath) {
+		try (BufferedWriter writer = Files.newBufferedWriter(Paths.get(exportPath));) {
+
+			StringBuilder build = new StringBuilder();
+			for (String[] data : dataList) {
+				build.setLength(0);
+				for (int i = 0; i < data.length; i++) {
+					if (i == data.length - 1) {
+						build.append(data[i]);
+					} else {
+						build.append(data[i] + ", ");
+					}
+				}
+				writer.write(build.toString());
+				writer.newLine();
+			}
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }
